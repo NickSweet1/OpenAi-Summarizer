@@ -14,7 +14,7 @@ const Demo = () => {
 
 
   useEffect(() => {
-    const articlesFromLocalStorage = json.parse(
+    const articlesFromLocalStorage = JSON.parse(
       localStorage.getItem('articles')
     )
 
@@ -54,9 +54,9 @@ const Demo = () => {
             type="url"
             placeholder='Enter a URL'
             value={article.url}
-            onChange={(e) => setarticle({ ...article, url: e.target.value})}
+            onChange={(e) => setArticle({ ...article, url: e.target.value})}
             required
-            className="url_input peer-focus:border-gray-700 peer-focus:tex-gray-700"
+            className="url_input peer-focus:border-gray-700 peer-focus:text-gray-700"
           />
           <button 
             type="submit"
@@ -68,7 +68,7 @@ const Demo = () => {
 
         {/* Browser URL Search History */}
         <div className='flex flex-col gap-1m max-h-60 overflow-y-auto'>
-          {allAritlces.map((item, index) => (
+          {allArticles.map((item, index) => (
             <div
               key={`link-${index}`}
               onClick={() => setArticle(item)}
@@ -80,11 +80,14 @@ const Demo = () => {
                     alt='copy icon'
                     className='w-[40%] h-[40%] object-contain'
                   />
-                  <p className='"flex-1 font-satoshi text-blue-700 font-mediun text-sm truncate'>{item.url}</p>
+                  </div>
+                  <p className='flex-1 font-satoshi text-blue-700 font-medium text-sm truncate'>
+                    {item.url}
+                  </p>
                 </div>
                 ))}
               </div>
-        {/* Display Results */}
+
       </div>
     </section>
   )
